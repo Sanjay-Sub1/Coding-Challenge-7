@@ -1,5 +1,4 @@
 //Task 1 creates an object company which has departments, employees, and their salaries, as well as a hierarchy through subordinate arrays
-
 const company = {
     departments: [
         {
@@ -69,8 +68,24 @@ function calculateDepartmentSalary(department) {
     console.log(departmentSalary);
 }
 
+//Task 3 Creates a function that can calculate the total salaries across all departments
+function calculateCompanysalary(company){
+//Sets the total to 0
+    var totalSalary = 0;
+//Runs the calculateDepartmentSalary and adds it to the total
+    for(const department of company.departments){
+        totalSalary += calculateDepartmentSalary(department);
+    }
+console.log(totalSalary);
+}
+
+calculateCompanysalary(company);
+
 //Used to display the array "Comapny"
 console.log(company);
 
 //Used to see the total salary of the first department "Marketing"
 calculateDepartmentSalary(company.departments[0]);
+
+//Used to display the total salary of the company
+calculateTotalSalary(comapny);
