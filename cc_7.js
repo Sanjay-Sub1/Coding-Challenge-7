@@ -53,5 +53,24 @@ const company = {
     ]
 };
 
+//Task 2 creates a function that can calculate the total salary of a department
+function calculateDepartmentSalary(department) {
+//Sets the department salary to 0 
+    var departmentSalary = 0;
+//Adds the employee salary of each employee in the department
+    for (const employee of department.employees) {
+        departmentSalary += employee.salary;
+//Adds the suboordinate salary
+        if (employee.subordinates && employee.subordinates.length > 0) {
+            departmentSalary += calculateDepartmentSalary({employees: employee.subordinates });
+        }
+    }
+
+    console.log(departmentSalary);
+}
+
 //Used to display the array "Comapny"
 console.log(company);
+
+//Used to see the total salary of the first department "Marketing"
+calculateDepartmentSalary(company.departments[0]);
